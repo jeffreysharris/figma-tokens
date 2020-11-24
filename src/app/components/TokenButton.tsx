@@ -124,6 +124,17 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                 if (!editMode) showEditButton = true;
             }
             break;
+        case 'depth':
+            properties = [
+                {
+                    label: 'Depth',
+                    name: 'depth',
+                },
+            ];
+            style = {
+                boxShadow: displayValue,
+            };
+            break;
         default:
             break;
     }

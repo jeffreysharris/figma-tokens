@@ -19,6 +19,7 @@ const supportedProperties = [
     'fontSizes',
     'lineHeights',
     'typography',
+    'depth',
 ];
 
 const JSONEditor = () => {

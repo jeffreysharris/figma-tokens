@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export function defaultJSON() {
     return {
         spacing: {
@@ -98,14 +99,17 @@ export function defaultJSON() {
                 fontSize: '$fontSizes.body',
             },
         },
-    };
-}
-
-export function defaultDecisions() {
-    return {
-        colors: {
-            primary: '$colors.blue',
-            danger: '$colors.red',
+        depth: {
+            default: '12px 12px 2px 1px rgba(0, 0, 255, .2)',
         },
     };
 }
+
+// export function defaultDecisions() {
+//     return {
+//         colors: {
+//             primary: '$colors.blue',
+//             danger: '$colors.red',
+//         },
+//     };
+// }

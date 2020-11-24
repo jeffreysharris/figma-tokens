@@ -202,6 +202,11 @@ export async function setValuesOnNode(node, values, data) {
             node.itemSpacing = Number(values.itemSpacing);
         }
     }
+
+    // DEPTH
+    if (values.depth) {
+        console.log('depth!');
+    }
 }
 
 export async function removeValuesFromNode(node, prop) {
@@ -274,5 +279,9 @@ export async function removeValuesFromNode(node, prop) {
                 node.itemSpacing = 0;
             }
             break;
+        case 'depth':
+            if (typeof node.effects !== 'undefined') {
+                node.effects = [];
+            }
     }
 }
