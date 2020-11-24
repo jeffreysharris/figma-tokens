@@ -7,7 +7,8 @@ const mappedTokens = (tokens) => {
     const properties = {
         sizing: {},
         spacing: {},
-        colors: {},
+        fill: {},
+        stroke: {},
         borderRadius: {},
         borderWidth: {},
         opacity: {},
@@ -61,7 +62,7 @@ const Tokens = () => {
                                 values={tokenValues}
                             />
                         );
-                    case 'colors':
+                    case 'fill':
                         return (
                             <div key={tokenValues[0]}>
                                 <TokenListing
@@ -71,6 +72,20 @@ const Tokens = () => {
                                     label="Fill"
                                     property="Fill"
                                     type="fill"
+                                    values={tokenValues}
+                                />
+                            </div>
+                        );
+                    case 'stroke':
+                        return (
+                            <div key={tokenValues[0]}>
+                                <TokenListing
+                                    showDisplayToggle
+                                    createButton
+                                    help="If a (local) style is found with the same name it will match to that, if not, will use hex value. Use 'Create Style' to batch-create styles from your tokens (e.g. in your design library). In the future we'll load all 'remote' styles and reference them inside the JSON."
+                                    label="Stroke"
+                                    property="Stroke"
+                                    type="stroke"
                                     values={tokenValues}
                                 />
                             </div>

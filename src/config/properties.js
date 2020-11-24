@@ -8,7 +8,7 @@ export default {
     horizontalPadding: {},
     itemSpacing: {},
     fill: {},
-    border: {},
+    stroke: {},
     borderRadius: {},
     borderRadiusTopLeft: {},
     borderRadiusTopRight: {},

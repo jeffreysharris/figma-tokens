@@ -161,17 +161,17 @@ export async function setValuesOnNode(node, values, data) {
         }
     }
 
-    // BORDER WIDTH
-    if (values.border) {
+    // STROKE
+    if (values.stroke) {
         if (typeof node.strokes !== 'undefined') {
             const paints = figma.getLocalPaintStyles();
-            const path = data.border.split('.');
+            const path = data.stroke.split('.');
             const pathname = path.slice(1, path.length).join('/');
             const matchingStyles = paints.filter((n) => n.name === pathname);
-            const {color, opacity} = convertToFigmaColor(values.border);
+            const {color, opacity} = convertToFigmaColor(values.stroke);
 
             if (matchingStyles.length) {
-                matchingStyles[0].paints = [{color, opacity, type: 'SOLID'}];
+                // matchingStyles[0].paints = [{color, opacity, type: 'SOLID'}];
                 node.strokeStyleId = matchingStyles[0].id;
             } else {
                 node.strokes = [{type: 'SOLID', color, opacity}];
@@ -247,7 +247,7 @@ export async function removeValuesFromNode(node, prop) {
                 node.fills = [];
             }
             break;
-        case 'border':
+        case 'strokes':
             if (typeof node.strokes !== 'undefined') {
                 node.strokes = [];
             }

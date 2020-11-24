@@ -9,7 +9,8 @@ import Button from './Button';
 const supportedProperties = [
     'sizing',
     'spacing',
-    'colors',
+    'fill',
+    'stroke',
     'borderRadius',
     'borderWidth',
     'opacity',
@@ -90,7 +91,7 @@ const JSONEditor = () => {
                 </div>
             </div>
             {supportedProperties.map((token) => {
-                let handleClick = () => {
+                const handleClick = () => {
                     if (openToken === token) {
                         setOpenToken('');
                     } else {

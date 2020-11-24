@@ -93,9 +93,24 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                     label: 'Fill',
                     name: 'fill',
                 },
+            ];
+            style = {
+                '--backgroundColor': displayValue,
+                '--borderColor': lightOrDark(displayValue) === 'light' ? '#f5f5f5' : 'white',
+            };
+            buttonClass.push('button-property-color');
+            if (displayType === 'LIST') {
+                buttonClass.push('button-property-color-listing');
+                showValue = true;
+                if (!editMode) showEditButton = true;
+            }
+            break;
+        case 'stroke':
+            showValue = false;
+            properties = [
                 {
-                    label: 'Border',
-                    name: 'border',
+                    label: 'Stroke',
+                    name: 'stroke',
                 },
             ];
             style = {
