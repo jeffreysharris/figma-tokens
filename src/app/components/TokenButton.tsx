@@ -114,10 +114,10 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                 },
             ];
             style = {
-                '--backgroundColor': displayValue,
-                '--borderColor': lightOrDark(displayValue) === 'light' ? '#f5f5f5' : 'white',
+                '--backgroundColor': '#fff',
+                '--borderColor': displayValue,
             };
-            buttonClass.push('button-property-color');
+            buttonClass.push('button-property-color button-property-color-stroke');
             if (displayType === 'LIST') {
                 buttonClass.push('button-property-color-listing');
                 showValue = true;
