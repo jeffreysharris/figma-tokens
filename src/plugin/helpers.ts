@@ -91,3 +91,36 @@ export function convertToFigmaColor(input) {
         opacity,
     };
 }
+
+export function convertToFigmaShadow(input) {
+    /*
+    blendMode: "NORMAL"
+    color: {r: 0, g: 0, b: 0, a: 0.25}
+    offset: {x: 0, y: 4}
+    radius: 4
+    spread: 0
+    type: "DROP_SHADOW"
+    visible: true
+    */
+
+    // split input on spaces
+    const vals = input.split(/(?<!,)\s/gi);
+    console.log(vals);
+
+    const blendMode = 'NORMAL';
+    const type = 'DROP_SHADOW';
+    const visible = true;
+    let color = {r: 0, g: 0, b: 0, a: 0.25};
+    let offset = {x: 0, y: 4};
+    let radius = 4;
+    let spread = 0;
+    return {
+        blendMode,
+        color,
+        offset,
+        radius,
+        spread,
+        type,
+        visible,
+    };
+}

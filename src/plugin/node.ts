@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import objectPath from 'object-path';
-import {convertToFigmaColor} from './helpers';
+import {convertToFigmaColor, convertToFigmaShadow} from './helpers';
 import {fetchAllPluginData} from './pluginData';
 import {setTextValuesOnTarget} from './styles';
 import store from './store';
@@ -180,6 +180,10 @@ export async function setValuesOnNode(node, values, data) {
     }
 
     // SPACING
+
+    // horizontalPadding and verticalPadding have been deprecated!
+    // can be different with new autoLayout update
+
     if (values.spacing) {
         if (typeof node.horizontalPadding !== 'undefined') {
             node.horizontalPadding = Number(values.spacing);
@@ -205,7 +209,21 @@ export async function setValuesOnNode(node, values, data) {
 
     // DEPTH
     if (values.depth) {
-        console.log('depth!');
+        // console.log('depth!');
+        if (typeof node.effects !== 'undefined') {
+            const effects = figma.getLocalEffectStyles();
+            const path = data.depth.split('.');
+            const pathname = path.slice(1, path.length).join('/');
+            const matchingStyles = effects.filter((n) => n.name === pathname);
+            /* offset-x | offset-y | blur-radius | spread-radius | color */
+            const shadows = convertToFigmaShadow(values.depth);
+            // console.log(shadows);
+            if (matchingStyles.length) {
+                node.effectStyleId = matchingStyles[0].id;
+            } else {
+                node.effects = [shadows];
+            }
+        }
     }
 }
 
