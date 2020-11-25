@@ -209,18 +209,17 @@ export async function setValuesOnNode(node, values, data) {
 
     // DEPTH
     if (values.depth) {
-        // console.log('depth!');
         if (typeof node.effects !== 'undefined') {
             const effects = figma.getLocalEffectStyles();
             const path = data.depth.split('.');
             const pathname = path.slice(1, path.length).join('/');
             const matchingStyles = effects.filter((n) => n.name === pathname);
             const shadows = convertToFigmaShadow(values.depth);
-            console.log(shadows);
             if (matchingStyles.length) {
                 node.effectStyleId = matchingStyles[0].id;
             } else {
-                node.effects = [shadows];
+                // convertToFigmaShadow will return an array of effect objects
+                node.effects = shadows;
             }
         }
     }

@@ -95,55 +95,75 @@ export function convertToFigmaColor(input) {
 export function convertToFigmaShadow(input) {
     /*
     FIGMA FORMAT:
-    blendMode: "NORMAL"
-    color: {r: 0, g: 0, b: 0, a: 0.25}
-    offset: {x: 0, y: 4}
-    radius: 4
-    spread: 0
-    type: "DROP_SHADOW"
-    visible: true
+    Expects an array of objects, e.g.
 
-    vs. CSS BOX-SHADOW:
+    [
+        {
+            blendMode: "NORMAL",
+            color: {r: 0, g: 0, b: 0, a: 0.25},
+            offset: {x: 0, y: 4},
+            radius: 4,
+            spread: 0,
+            type: "DROP_SHADOW",
+            visible: true,
+        },
+        {...}
+    ]
+
+    vs.
+
+    CSS BOX-SHADOW:
     offset-x | offset-y | blur-radius | spread-radius | color
 
     Must have 2:4 length values
     if only 2 given, assume offset-x, offset-y
     if third, assume blur
     if fourth, assume spread
+
+    Can have multiple box-shadows if comma separated, e.g.
+    box-shadow: 3px 3px red, -1em 0 0.4em olive;
     */
+
+    let result: (string | object | boolean)[] = [];
 
     // only supporting drop shadows for now
     const blendMode = 'NORMAL';
     const type = 'DROP_SHADOW';
     const visible = true;
 
-    // split input on spaces, assume css box-shadow formatting
-    const vals = input.split(/(?<!,)\s/gi);
-    console.log(vals);
+    // split the input to get each box-shadow value (comma separated) in an array
+    const arrayOfShadows = input.split(/((?<=\))|(?<=#[A-z]{3,}))\s?,\s?/gi).filter((i: string) => i);
 
-    // assume last value must be color per CSS spec
-    // reuse the color conversion function AMAP...
-    const convertedColor = convertToFigmaColor(vals[vals.length - 1]);
-    const color = {
-        r: convertedColor.color.r,
-        g: convertedColor.color.g,
-        b: convertedColor.color.b,
-        a: convertedColor.opacity,
-    };
+    // split each shadow array on spaces, assume css box-shadow formatting
+    arrayOfShadows.forEach((shadow) => {
+        const vals = shadow.split(/(?<!,)\s/gi);
+        // assume last value must be color per CSS spec
+        // reuse the color conversion function AMAP...
+        const convertedColor = convertToFigmaColor(vals[vals.length - 1]);
+        const color = {
+            r: convertedColor.color.r,
+            g: convertedColor.color.g,
+            b: convertedColor.color.b,
+            a: convertedColor.opacity,
+        };
 
-    const offset = {
-        x: Number(vals[0].replace(/[^-\d]/g, '')),
-        y: Number(vals[1].replace(/[^-\d]/g, '')),
-    };
-    const radius = vals[2] ? Number(vals[2].replace(/[^-\d]/g, '')) : 0;
-    const spread = vals[3] ? Number(vals[3].replace(/[^-\d]/g, '')) : 0;
-    return {
-        blendMode,
-        color,
-        offset,
-        radius,
-        spread,
-        type,
-        visible,
-    };
+        const offset = {
+            x: Number(vals[0].replace(/[^-\d]/g, '')),
+            y: Number(vals[1].replace(/[^-\d]/g, '')),
+        };
+        const radius = vals[2] ? Number(vals[2].replace(/[^-\d]/g, '')) : 0;
+        const spread = vals[3] ? Number(vals[3].replace(/[^-\d]/g, '')) : 0;
+        // must be in this form to set drop-shadow effect in Figma
+        result.push({
+            blendMode,
+            color,
+            offset,
+            radius,
+            spread,
+            type,
+            visible,
+        });
+    });
+
+    return result;
 }
