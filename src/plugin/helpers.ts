@@ -94,6 +94,7 @@ export function convertToFigmaColor(input) {
 
 export function convertToFigmaShadow(input) {
     /*
+    FIGMA FORMAT:
     blendMode: "NORMAL"
     color: {r: 0, g: 0, b: 0, a: 0.25}
     offset: {x: 0, y: 4}
@@ -101,19 +102,41 @@ export function convertToFigmaShadow(input) {
     spread: 0
     type: "DROP_SHADOW"
     visible: true
+
+    vs. CSS BOX-SHADOW:
+    offset-x | offset-y | blur-radius | spread-radius | color
+
+    Must have 2:4 length values
+    if only 2 given, assume offset-x, offset-y
+    if third, assume blur
+    if fourth, assume spread
     */
 
-    // split input on spaces
-    const vals = input.split(/(?<!,)\s/gi);
-    console.log(vals);
-
+    // only supporting drop shadows for now
     const blendMode = 'NORMAL';
     const type = 'DROP_SHADOW';
     const visible = true;
-    let color = {r: 0, g: 0, b: 0, a: 0.25};
-    let offset = {x: 0, y: 4};
-    let radius = 4;
-    let spread = 0;
+
+    // split input on spaces, assume css box-shadow formatting
+    const vals = input.split(/(?<!,)\s/gi);
+    console.log(vals);
+
+    // assume last value must be color per CSS spec
+    // reuse the color conversion function AMAP...
+    const convertedColor = convertToFigmaColor(vals[vals.length - 1]);
+    const color = {
+        r: convertedColor.color.r,
+        g: convertedColor.color.g,
+        b: convertedColor.color.b,
+        a: convertedColor.opacity,
+    };
+
+    const offset = {
+        x: Number(vals[0].replace(/[^-\d]/g, '')),
+        y: Number(vals[1].replace(/[^-\d]/g, '')),
+    };
+    const radius = vals[2] ? Number(vals[2].replace(/[^-\d]/g, '')) : 0;
+    const spread = vals[3] ? Number(vals[3].replace(/[^-\d]/g, '')) : 0;
     return {
         blendMode,
         color,

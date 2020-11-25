@@ -215,9 +215,8 @@ export async function setValuesOnNode(node, values, data) {
             const path = data.depth.split('.');
             const pathname = path.slice(1, path.length).join('/');
             const matchingStyles = effects.filter((n) => n.name === pathname);
-            /* offset-x | offset-y | blur-radius | spread-radius | color */
             const shadows = convertToFigmaShadow(values.depth);
-            // console.log(shadows);
+            console.log(shadows);
             if (matchingStyles.length) {
                 node.effectStyleId = matchingStyles[0].id;
             } else {
