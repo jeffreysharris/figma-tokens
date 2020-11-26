@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import {figmaRGBToHex} from '@figma-plugin/helpers';
+import {figmaRGBToHex, clone} from '@figma-plugin/helpers';
 import Dot from 'dot-object';
-import {convertLineHeightToFigma, convertToFigmaColor} from './helpers';
+import {convertLineHeightToFigma, convertToFigmaColor, convertToFigmaShadow} from './helpers';
 import {notifyStyleValues} from './notifiers';
 
 const dot = new Dot('/');
@@ -25,6 +25,29 @@ const updateColorStyles = (colorTokens, shouldCreate = false) => {
             } else if (shouldCreate) {
                 const newStyle = figma.createPaintStyle();
                 newStyle.paints = [{color, opacity, type: 'SOLID'}];
+                newStyle.name = key;
+            }
+        }
+    });
+};
+
+const updateEffectStyles = (depthTokens, shouldCreate = false) => {
+    const cols = dot.dot(depthTokens);
+    const effects = figma.getLocalEffectStyles();
+    Object.entries(cols).map(([key, value]) => {
+        const matchingStyle = effects.filter((n) => n.name === key);
+        if (typeof value === 'string') {
+            const shadows = convertToFigmaShadow(value);
+            console.log(shadows);
+            if (matchingStyle.length) {
+                let fx = clone(matchingStyle[0].effects);
+                fx = shadows;
+                matchingStyle[0].effects = fx;
+            } else if (shouldCreate) {
+                const newStyle = figma.createEffectStyle();
+                let fx = clone(newStyle.effects);
+                fx = shadows;
+                newStyle.effects = fx;
                 newStyle.name = key;
             }
         }
@@ -86,12 +109,16 @@ const updateTextStyles = (textTokens, shouldCreate = false) => {
 };
 
 export function updateStyles(tokens, shouldCreate = false): void {
-    if (!tokens.colors && !tokens.typography) return;
-    if (tokens.colors) {
-        updateColorStyles(tokens.colors, shouldCreate);
+    if (!tokens.fill && !tokens.stroke && !tokens.typography && !tokens.depth) return;
+    if (tokens.fill || tokens.stroke) {
+        const combinedColorTokens = Object.assign(tokens.fill, tokens.stroke);
+        updateColorStyles(combinedColorTokens, shouldCreate);
     }
     if (tokens.typography) {
         updateTextStyles(tokens.typography, shouldCreate);
+    }
+    if (tokens.depth) {
+        updateEffectStyles(tokens.depth, shouldCreate);
     }
 }
 

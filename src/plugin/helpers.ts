@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-param-reassign */
 import {webRGBToFigmaRGB, hexToFigmaRGB} from '@figma-plugin/helpers';
 
@@ -6,6 +8,34 @@ interface RGBA {
     g: number;
     b: number;
     a?: number;
+}
+
+export function clone(val) {
+    const type = typeof val;
+    if (val === null) {
+        return null;
+    }
+    if (type === 'undefined' || type === 'number' || type === 'string' || type === 'boolean') {
+        return val;
+    }
+    if (type === 'object') {
+        if (val instanceof Array) {
+            return val.map((x) => clone(x));
+        }
+        if (val instanceof Uint8Array) {
+            return new Uint8Array(val);
+        }
+        const o = {};
+        // tslint:disable-next-line: forin
+        for (const key in val) {
+            o[key] = clone(val[key]);
+        }
+        return o;
+    }
+    // eslint-disable-next-line no-throw-literal
+    // tslint:disable-next-line: no-string-throw
+    // eslint-disable-next-line no-throw-literal
+    throw 'unknown';
 }
 
 /**
@@ -124,7 +154,7 @@ export function convertToFigmaShadow(input) {
     box-shadow: 3px 3px red, -1em 0 0.4em olive;
     */
 
-    let result: (string | object | boolean)[] = [];
+    const result: object[] = [];
 
     // only supporting drop shadows for now
     const blendMode = 'NORMAL';

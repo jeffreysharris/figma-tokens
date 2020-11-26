@@ -215,6 +215,7 @@ export async function setValuesOnNode(node, values, data) {
             const pathname = path.slice(1, path.length).join('/');
             const matchingStyles = effects.filter((n) => n.name === pathname);
             const shadows = convertToFigmaShadow(values.depth);
+            // console.log(shadows);
             if (matchingStyles.length) {
                 node.effectStyleId = matchingStyles[0].id;
             } else {

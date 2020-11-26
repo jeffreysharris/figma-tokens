@@ -73,32 +73,7 @@ export function defaultJSON() {
             h6: 16,
             body: 16,
         },
-        typography: {
-            'H1/Bold': {
-                fontFamily: '$fontFamilies.heading',
-                fontWeight: '$fontWeights.headingBold',
-                lineHeight: '$lineHeights.heading',
-                fontSize: '$fontSizes.h1',
-            },
-            'H1/Regular': {
-                fontFamily: '$fontFamilies.heading',
-                fontWeight: '$fontWeights.headingRegular',
-                lineHeight: '$lineHeights.heading',
-                fontSize: '$fontSizes.h1',
-            },
-            'H2/Bold': {
-                fontFamily: '$fontFamilies.heading',
-                fontWeight: '$fontWeights.hedingBold',
-                lineHeight: '$lineHeights.heading',
-                fontSize: '$fontSizes.h2',
-            },
-            Body: {
-                fontFamily: '$fontFamilies.body',
-                fontWeight: '$fontWeights.bodyRegular',
-                lineHeight: '$lineHeights.heading',
-                fontSize: '$fontSizes.body',
-            },
-        },
+        typography: {},
         depth: {
             default: '12px -12px 2px 1px rgba(0, 0, 255, .2)',
         },
