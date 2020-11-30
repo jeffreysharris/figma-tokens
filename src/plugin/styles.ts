@@ -123,10 +123,10 @@ export function updateStyles(tokens, shouldCreate = false): void {
 }
 
 export function pullStyles(styleTypes): void {
-    let colors;
+    let fill;
     // let typography;
     if (styleTypes.colorStyles) {
-        colors = figma
+        fill = figma
             .getLocalPaintStyles()
             .filter((style) => style.paints.length === 1 && style.paints[0].type === 'SOLID')
             .map((style) => {
@@ -143,5 +143,5 @@ export function pullStyles(styleTypes): void {
     // if (styleTypes.textStyles) {
     //     typography = figma.getLocalTextStyles();
     // }
-    notifyStyleValues({colors});
+    notifyStyleValues({fill});
 }
