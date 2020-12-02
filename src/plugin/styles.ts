@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import {figmaRGBToHex, clone} from '@figma-plugin/helpers';
+import {figmaRGBToHex, figmaRGBToWebRGB, clone} from '@figma-plugin/helpers';
 import Dot from 'dot-object';
 import {convertLineHeightToFigma, convertToFigmaColor, convertToFigmaShadow} from './helpers';
 import {notifyStyleValues} from './notifiers';
@@ -124,6 +124,7 @@ export function updateStyles(tokens, shouldCreate = false): void {
 
 export function pullStyles(styleTypes): void {
     let fill;
+    let depth;
     // let typography;
     if (styleTypes.colorStyles) {
         fill = figma
@@ -139,9 +140,29 @@ export function pullStyles(styleTypes): void {
                 return null;
             });
     }
+    if (styleTypes.effectStyles) {
+        depth = figma
+            .getLocalEffectStyles()
+            .filter((style) => style.effects.length === 1 && style.effects[0].type === 'DROP_SHADOW')
+            .map((style) => {
+                const effect = style.effects[0];
+                if (effect.type === 'DROP_SHADOW') {
+                    const {r, g, b, a} = effect.color;
+                    const {x, y} = effect.offset;
+                    const shadow = `${x}, ${y}, ${effect.radius}, ${effect.spread} rgba(${figmaRGBToWebRGB({
+                        r,
+                        g,
+                        b,
+                        a,
+                    })})`;
+                    return [style.name, shadow];
+                }
+                return null;
+            });
+    }
     // Not used yet, but this is where we fetch text styles and should bring those into values that can be used by our tokens
     // if (styleTypes.textStyles) {
     //     typography = figma.getLocalTextStyles();
     // }
-    notifyStyleValues({fill});
+    notifyStyleValues({fill, depth});
 }

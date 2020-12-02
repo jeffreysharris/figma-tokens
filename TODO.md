@@ -1,18 +1,12 @@
-[ ] Bug -- if you create styles from tokens and have applied tokens to a node, it doesn't then automatically connect those styles to the node as well. You have to disconnect the tokens and re-apply. (This is in original plugin as well.)
-
-[ ] Bug -- Both color and depth don't update JSON and tokens if you edit the corresponding Figma style. (This is in the original plugin as well.)
-
-[ ] Bug -- Remove tokens from layer leaves drop-shadow effect in place
-
 [ ] Importing color styles needs to split between fill and border(?)
+  - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
+  - Is it possible to capture the style update message automatically from Figma? If not, would it be good to have a separate "refresh" button?
 
 [ ] Fix the deprecated spacing issue to meet new AutoLayout standard
 
 [ ] Change menu clicking behavior:
 - If there are sub-options like in Spacing, left-click opens menu
 - Right click opens "edit/delete" options
-
-[ ] Import effect styles
 
 [ ] Import typography styles
 
@@ -21,7 +15,22 @@
 - Parse file structure for supported properties and build the groups
 - Export new doc with changes, Save As dialog
 
+[ ] Swap "clone" snippet function for Figma helper function
+
+[ ] Bug -- Multi-selection doesn't show tokens in common between selection items.. problem with MergeTokens()?
+
+[ ] Bug -- Depth example disappears from the Depth buttons when switching between Tokens/JSON/Inspector tabs
+
 ---
+
+[X] Import effect styles
+
+[X] Bug -- Remove tokens from layer leaves drop-shadow effect in place
+
+[\] Bug -- Both color and depth don't update JSON and tokens if you edit the corresponding Figma style. (This is in the original plugin as well.)
+  - "Import color styles" will update the tokens/JSON. This now falls under the "Importing color styles" fill/border bug.
+
+[X] Bug -- if you create styles from tokens and have applied tokens to a node, it doesn't then automatically connect those styles to the node as well. You have to disconnect the tokens and re-apply. (This is in original plugin as well.)
 
 [X] Bug -- "Import colors" button creates a "Colors" group. Still based on original version of plugin??
 - Corrected, but created another bug since we now have to parse between Fill and Stroke. Current functionality only considers as Fill. How to create delineation?

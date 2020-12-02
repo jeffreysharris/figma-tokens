@@ -181,6 +181,7 @@ function stateReducer(state, action) {
                         styleTypes: {
                             textStyles: true,
                             colorStyles: true,
+                            effectStyles: true,
                         },
                     },
                 },
