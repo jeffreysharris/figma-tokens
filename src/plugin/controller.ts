@@ -52,6 +52,7 @@ figma.ui.onmessage = async (msg) => {
         case 'create-styles':
             try {
                 updateStyles(msg.tokens, true);
+                updateNodes(findAllWithData(), msg.tokens);
             } catch (e) {
                 console.error(e);
             }
