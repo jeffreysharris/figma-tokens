@@ -1,6 +1,8 @@
 import * as React from 'react';
+// import {showMenu} from 'react-contextmenu';
 import Tooltip from './Tooltip';
 import MoreButton from './MoreButton';
+// import EditButton from './EditButton';
 import {useTokenState, useTokenDispatch} from '../store/TokenContext';
 import Icon from './Icon';
 import {lightOrDark, colorByHashCode} from './utils';
@@ -170,6 +172,16 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
         }
     };
 
+    // const whichClicked = (e) => {
+    //     console.log('whichClicked');
+    //     const x = e.clientX;
+    //     const y = e.clientY;
+    //     showMenu({
+    //         position: {x, y},
+    //         id: `${path}-${name}-edit`,
+    //     });
+    // };
+
     return (
         <div
             className={`relative mb-1 mr-1 flex button button-property ${buttonClass.join(' ')} ${
@@ -192,7 +204,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                         className="w-full h-full"
                         disabled={editMode ? false : disabled}
                         type="button"
-                        onClick={() => onClick(properties[0])}
+                        // onClick={whichClicked}
                     >
                         <div className="button-text">{showValue && <span>{name}</span>}</div>
                         {editMode && <div className="button-edit-overlay">Edit</div>}

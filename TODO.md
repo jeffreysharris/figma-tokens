@@ -1,14 +1,19 @@
+[ ] Change menu clicking behavior:
+  [-] If there are sub-options like in Spacing, left-click opens menu
+    [X] Left click opens the menu
+    [ ] No left-click menu if there is only one property to adjust
+  [ ] Right click opens "edit/delete" options
+  [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
+
 [ ] Importing color styles needs to split between fill and border(?)
   - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
   - Is it possible to capture the style update message automatically from Figma? If not, would it be good to have a separate "refresh" button?
 
 [ ] Fix the deprecated spacing issue to meet new AutoLayout standard
-
-[ ] Change menu clicking behavior:
-- If there are sub-options like in Spacing, left-click opens menu
-- Right click opens "edit/delete" options
+- Needs to change menu to say "Top, Bottom, ..." etc.
 
 [ ] Import typography styles
+- Should also split into line-height, font-size, etc. tokens (this behavior may already be in the plugin)
 
 [ ] Import / export JSON:
 - Drop "Reset to Default / Clear / Save & Update" paradigm?
