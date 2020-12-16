@@ -1,12 +1,14 @@
 [ ] Change menu clicking behavior:
-  [-] If there are sub-options like in Spacing, left-click opens menu
+  [X] If there are sub-options like in Spacing, left-click opens menu
     [X] Left click opens a menu of properties
     [X] Menu items should not open contextmenu
-    [ ] No left-click menu if there is only one property to adjust
+    [X] No left-click menu if there is only one property to adjust
   [X] Right click only opens "edit/delete" options
   [ ] Style menu (rounded corners, highlight color, etc.)
   [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
   [X] Bug -- Tooltip isn't showing on :hover with menu-button
+
+[ ] Bug -- Stroke color/width isn't removed in styles pane when toggling token
 
 [ ] Change name, version, license etc.
   [ ] How is it displayed in the plugin?

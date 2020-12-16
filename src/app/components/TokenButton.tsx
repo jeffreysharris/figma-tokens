@@ -174,6 +174,33 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
         }
     };
 
+    let button;
+
+    if (properties.length > 1) {
+        button = (
+            <EditButton
+                properties={properties}
+                onClick={onClick}
+                showValue={showValue}
+                name={name}
+                path={path}
+                value={name}
+            />
+        );
+    } else {
+        button = (
+            <button
+                className="w-full h-full"
+                disabled={editMode ? false : disabled}
+                type="button"
+                onClick={() => onClick(properties[0])}
+            >
+                <div className="button-text">{showValue && <span>{name}</span>}</div>
+                {editMode && <div className="button-edit-overlay">Edit</div>}
+            </button>
+        );
+    }
+
     return (
         <div
             className={`relative mb-1 mr-1 flex button button-property ${buttonClass.join(' ')} ${
@@ -192,23 +219,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                 <Tooltip
                     label={`${name}: ${JSON.stringify(token, null, 2)}${realTokenValue ? `: ${realTokenValue}` : ''}`}
                 >
-                    <EditButton
-                        properties={properties}
-                        onClick={onClick}
-                        showValue={showValue}
-                        name={name}
-                        path={path}
-                        value={name}
-                    />
-                    {/* <button
-                            className="w-full h-full"
-                            disabled={editMode ? false : disabled}
-                            type="button"
-                            onClick={onClick}
-                        >
-                            <div className="button-text">{showValue && <span>{name}</span>}</div>
-                            {editMode && <div className="button-edit-overlay">Edit</div>}
-                        </button> */}
+                    {button}
                 </Tooltip>
             </MoreButton>
             {showEditButton && (
