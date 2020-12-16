@@ -192,7 +192,14 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                 <Tooltip
                     label={`${name}: ${JSON.stringify(token, null, 2)}${realTokenValue ? `: ${realTokenValue}` : ''}`}
                 >
-                    <EditButton properties={properties} onClick={onClick} showValue={showValue} name={name} />
+                    <EditButton
+                        properties={properties}
+                        onClick={onClick}
+                        showValue={showValue}
+                        name={name}
+                        path={path}
+                        value={name}
+                    />
                     {/* <button
                             className="w-full h-full"
                             disabled={editMode ? false : disabled}
