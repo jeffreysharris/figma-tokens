@@ -1,8 +1,9 @@
 [ ] Change menu clicking behavior:
   [-] If there are sub-options like in Spacing, left-click opens menu
-    [X] Left click opens the menu
+    [X] Left click opens a menu of properties
+    [X] Menu items should not open contextmenu
     [ ] No left-click menu if there is only one property to adjust
-  [ ] Right click opens "edit/delete" options
+  [X] Right click only opens "edit/delete" options
   [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
 
 [ ] Importing color styles needs to split between fill and border(?)

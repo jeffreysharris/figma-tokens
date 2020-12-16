@@ -1,36 +1,16 @@
 import * as React from 'react';
-import {ContextMenu, MenuItem, ContextMenuTrigger, showMenu} from 'react-contextmenu';
-import Icon from './Icon';
-import {useTokenState} from '../store/TokenContext';
+import {ContextMenu, MenuItem, ContextMenuTrigger} from 'react-contextmenu';
+// import Icon from './Icon';
+// import {useTokenState} from '../store/TokenContext';
 
-const MoreButton = ({properties, children, path, value, onClick, onEdit, onDelete}) => {
-    const whichClicked = (e) => {
-        console.log('Which Clicked!');
-        const x = e.clientX;
-        const y = e.clientY;
-        showMenu({
-            position: {x, y},
-            id: `${path}-${value}`,
-        });
-    };
-    const addHandlerToChildren = React.Children.map(children.props.children, (child) => {
-        console.log(child.props);
-        if (child.props.type === 'button') {
-            return React.cloneElement(child, {
-                onClick: whichClicked,
-                className: 'test',
-            });
-        }
-        return child;
-    });
-
-    const {selectionValues} = useTokenState();
-    const visibleProperties = properties.filter((p) => p.label);
+const MoreButton = ({children, path, value, onEdit, onDelete}) => {
+    // const {selectionValues} = useTokenState();
+    // const visibleProperties = properties.filter((p) => p.label);
     return (
         <div className="w-full">
-            <ContextMenuTrigger id={`${path}-${value}`}>{addHandlerToChildren}</ContextMenuTrigger>
+            <ContextMenuTrigger id={`${path}-${value}`}>{children}</ContextMenuTrigger>
             <ContextMenu id={`${path}-${value}`} className="text-xs">
-                {visibleProperties.map((property) => {
+                {/* {visibleProperties.map((property) => {
                     const isActive = selectionValues[property.name] === `${path}.${value}`;
 
                     return (
@@ -47,7 +27,7 @@ const MoreButton = ({properties, children, path, value, onClick, onEdit, onDelet
                         </MenuItem>
                     );
                 })}
-                {visibleProperties?.length > 1 && <MenuItem divider />}
+                {visibleProperties?.length > 1 && <MenuItem divider />} */}
                 <MenuItem onClick={onEdit}>Edit Token</MenuItem>
                 <MenuItem onClick={onDelete}>Delete Token</MenuItem>
             </ContextMenu>

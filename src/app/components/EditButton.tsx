@@ -1,38 +1,31 @@
+import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button';
 import * as React from 'react';
-import {ContextMenu, MenuItem, ContextMenuTrigger} from 'react-contextmenu';
-// import Icon from './Icon';
-// import {useTokenState} from '../store/TokenContext';
 
-const EditButton = ({children, path, value, onEdit, onDelete}) => {
-    // const {selectionValues} = useTokenState();
-    // const visibleProperties = properties.filter((p) => p.label);
-    return (
-        <div className="w-full">
-            <ContextMenuTrigger id={`${path}-${value}`}>{children}</ContextMenuTrigger>
-            <ContextMenu id={`${path}-${value}`} className="text-xs">
-                {/* {visibleProperties.map((property) => {
-                    const isActive = selectionValues[property.name] === `${path}.${value}`;
-
-                    return (
-                        <MenuItem key={property.label} onClick={() => onClick([property.name], isActive)}>
-                            <div className="flex items-center">
-                                {property.icon && (
-                                    <div className="mr-2 text-white">
-                                        <Icon name={property.icon} />
-                                    </div>
-                                )}
-                                {isActive && '✔'}
-                                {property.label}
-                            </div>
-                        </MenuItem>
-                    );
-                })}
-                {visibleProperties?.length > 1 && <MenuItem divider />} */}
-                <MenuItem onClick={onEdit}>Edit Token</MenuItem>
-                <MenuItem onClick={onDelete}>Delete Token</MenuItem>
-            </ContextMenu>
-        </div>
-    );
-};
+const EditButton = React.forwardRef<HTMLDivElement, {properties; onClick; showValue; name}>(
+    ({properties, onClick, showValue, name}, forwardedRef) => {
+        const visibleProperties = properties.filter((p) => p.label);
+        return (
+            <div className="w-full h-full" ref={forwardedRef}>
+                <Menu>
+                    <MenuButton className="button-text">{name}</MenuButton>
+                    <MenuList>
+                        {visibleProperties.map((property) => {
+                            return (
+                                <MenuItem
+                                    onContextMenu={(e) => {
+                                        e.stopPropagation();
+                                    }}
+                                    onSelect={() => onClick}
+                                >
+                                    {showValue && property.label}
+                                </MenuItem>
+                            );
+                        })}
+                    </MenuList>
+                </Menu>
+            </div>
+        );
+    }
+);
 
 export default EditButton;

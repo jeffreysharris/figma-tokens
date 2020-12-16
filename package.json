@@ -15,6 +15,7 @@
 	"dependencies": {
 		"@figma-plugin/helpers": "^0.13.2",
 		"@reach/dialog": "^0.10.3",
+		"@reach/menu-button": "^0.12.1",
 		"@reach/portal": "^0.10.5",
 		"@reach/tooltip": "^0.10.3",
 		"dot-object": "^2.1.3",
