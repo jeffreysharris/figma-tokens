@@ -8,7 +8,7 @@
   [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
   [X] Bug -- Tooltip isn't showing on :hover with menu-button
 
-[ ] Bug -- Stroke color/width isn't removed in styles pane when toggling token
+[X] Bug -- Stroke color/width isn't removed in styles pane when toggling token
 
 [ ] Change name, version, license etc.
   [ ] How is it displayed in the plugin?

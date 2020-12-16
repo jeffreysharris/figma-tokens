@@ -169,7 +169,9 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
             const newProps = {
                 [propsToSet[0].name || propsToSet[0]]: propsToSet[0].forcedValue || value,
             };
+            console.log(value);
             if (propsToSet[0].clear) propsToSet[0].clear.map((item) => Object.assign(newProps, {[item]: 'delete'}));
+            console.log(newProps);
             setPluginValue(newProps);
         }
     };

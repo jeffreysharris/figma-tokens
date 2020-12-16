@@ -21,7 +21,6 @@ export function defaultJSON() {
             xl: 16,
         },
         borderWidth: {
-            none: 0,
             xs: 1,
             sm: 2,
             md: 4,

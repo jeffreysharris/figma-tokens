@@ -79,6 +79,7 @@ export async function setValuesOnNode(node, values, data) {
     // BORDER WIDTH
     if (values.borderWidth) {
         // Has to be larger than 0
+        console.log(values.borderWidth);
         if (typeof node.strokeWeight !== 'undefined' && Number(values.borderWidth) >= 0) {
             node.strokeWeight = Number(values.borderWidth);
         }
@@ -269,7 +270,7 @@ export async function removeValuesFromNode(node, prop) {
                 node.fills = [];
             }
             break;
-        case 'strokes':
+        case 'stroke':
             if (typeof node.strokes !== 'undefined') {
                 node.strokes = [];
             }

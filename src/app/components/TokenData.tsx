@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 /* eslint-disable class-methods-use-this */
 import JSON5 from 'json5';
 import objectPath from 'object-path';
