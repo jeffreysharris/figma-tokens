@@ -4,7 +4,12 @@
     [X] Menu items should not open contextmenu
     [ ] No left-click menu if there is only one property to adjust
   [X] Right click only opens "edit/delete" options
+  [ ] Style menu (rounded corners, highlight color, etc.)
   [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
+  [X] Bug -- Tooltip isn't showing on :hover with menu-button
+
+[ ] Change name, version, license etc.
+  [ ] How is it displayed in the plugin?
 
 [ ] Importing color styles needs to split between fill and border(?)
   - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
