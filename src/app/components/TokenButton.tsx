@@ -1,6 +1,5 @@
 import * as React from 'react';
 // import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button';
-import '@reach/menu-button/styles.css';
 // import {showMenu} from 'react-contextmenu';
 import Tooltip from './Tooltip';
 import MoreButton from './MoreButton';
@@ -74,7 +73,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                     name: 'spacing',
                     clear: ['horizontalPadding', 'verticalPadding', 'itemSpacing'],
                 },
-                {label: 'Horizontal', name: 'horizontalPadding', icon: 'HorizontalPadding'},
+                {label: 'Horizontal', name: 'horizontalPadding', icon: 'LeftPadding'},
                 {label: 'Vertical', name: 'verticalPadding', icon: 'VerticalPadding'},
                 {label: 'Gap', name: 'itemSpacing', icon: 'Gap'},
             ];
@@ -169,9 +168,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
             const newProps = {
                 [propsToSet[0].name || propsToSet[0]]: propsToSet[0].forcedValue || value,
             };
-            console.log(value);
             if (propsToSet[0].clear) propsToSet[0].clear.map((item) => Object.assign(newProps, {[item]: 'delete'}));
-            console.log(newProps);
             setPluginValue(newProps);
         }
     };

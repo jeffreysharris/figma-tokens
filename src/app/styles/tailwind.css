@@ -146,6 +146,10 @@ body {
     border-color: var(--borderColor);
 }
 
+.button-property-color-stroke .button-text::before {
+    @apply border-4;
+}
+
 .button-property-color-listing {
     @apply rounded w-full p-1 -mb-1;
 }
@@ -305,6 +309,18 @@ form {
     cursor: inherit;
     margin-bottom: 3px;
     padding: 2px 0;
+}
+
+[data-reach-menu-list] {
+    @apply rounded shadow border-gray-100;
+}
+
+[data-reach-menu-item] {
+    @apply mx-1 rounded;
+}
+
+[data-reach-menu-item][data-selected] {
+    @apply text-gray-900 bg-gray-200 !important;
 }
 
 @tailwind utilities;

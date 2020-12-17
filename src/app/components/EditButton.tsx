@@ -1,4 +1,5 @@
 import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button';
+import '@reach/menu-button/styles.css';
 import * as React from 'react';
 import Icon from './Icon';
 import {useTokenState} from '../store/TokenContext';
@@ -19,7 +20,7 @@ const EditButton = React.forwardRef<HTMLDivElement, MenuProps>((props, forwarded
         <div className="w-full h-full" ref={forwardedRef} {...props}>
             <Menu>
                 <MenuButton className="button-text">{props.showValue && props.name}</MenuButton>
-                <MenuList>
+                <MenuList className="reach-menu-list">
                     {visibleProperties.map((property) => {
                         const isActive = selectionValues[property.name] === `${props.path}.${props.value}`;
                         return (

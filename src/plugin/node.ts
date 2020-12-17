@@ -79,7 +79,6 @@ export async function setValuesOnNode(node, values, data) {
     // BORDER WIDTH
     if (values.borderWidth) {
         // Has to be larger than 0
-        console.log(values.borderWidth);
         if (typeof node.strokeWeight !== 'undefined' && Number(values.borderWidth) >= 0) {
             node.strokeWeight = Number(values.borderWidth);
         }
@@ -216,7 +215,6 @@ export async function setValuesOnNode(node, values, data) {
             const pathname = path.slice(1, path.length).join('/');
             const matchingStyles = effects.filter((n) => n.name === pathname);
             const shadows = convertToFigmaShadow(values.depth);
-            // console.log(shadows);
             if (matchingStyles.length) {
                 node.effectStyleId = matchingStyles[0].id;
             } else {
