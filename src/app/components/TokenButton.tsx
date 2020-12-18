@@ -71,7 +71,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                     label: 'All',
                     icon: 'Spacing',
                     name: 'spacing',
-                    clear: ['paddingLeft', 'paddingRight', 'verticalPadding', 'itemSpacing'],
+                    clear: ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom', 'itemSpacing'],
                 },
                 {label: 'Left', name: 'paddingLeft', icon: 'LeftPadding'},
                 {label: 'Right', name: 'paddingRight', icon: 'RightPadding'},

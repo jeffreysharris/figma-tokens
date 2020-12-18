@@ -185,13 +185,11 @@ export async function setValuesOnNode(node, values, data) {
     // can be different with new autoLayout update
 
     if (values.spacing) {
-        if (typeof node.paddingLeft !== 'undefined' && typeof node.paddingRight !== 'undefined') {
-            node.paddingLeft = Number(values.spacing);
-            node.paddingRight = Number(values.spacing);
-            node.paddingTop = Number(values.spacing);
-            node.paddingBottom = Number(values.spacing);
-            node.itemSpacing = Number(values.spacing);
-        }
+        node.paddingLeft = Number(values.spacing);
+        node.paddingRight = Number(values.spacing);
+        node.paddingTop = Number(values.spacing);
+        node.paddingBottom = Number(values.spacing);
+        node.itemSpacing = Number(values.spacing);
     }
     if (values.paddingLeft) {
         if (typeof node.paddingLeft !== 'undefined') {
