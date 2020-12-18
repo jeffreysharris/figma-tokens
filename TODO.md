@@ -1,46 +1,43 @@
-[ ] Change menu clicking behavior:
+[ ] Inspector tab needs to be like:
+    atoms.borderRadius.xl, and closer to JSON, copy/paste okay
+    [ ] Need to rollup all tokens from group, frame
+
+---
+[ ] Change name, version, license etc.
+    [ ] How is it displayed in the plugin?
+
+[ ] Importing color styles needs to split between fill and border(?)
+
+[ ] Font-family and font-size are not applied until weight is applied
+
+[ ] Can we cascade changes down applied at frame level? E.g. I apply a font at the frame level, and it affects all text within the frame
+    - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
+    - Is it possible to capture the style update message automatically from Figma? If not, would it be good to have a separate "refresh" button?
+
+[ ] Import typography styles
+    - Should also split into line-height, font-size, etc. tokens (this behavior may already be in the plugin)
+
+[ ] Import / export JSON:
+    - Drop "Reset to Default / Clear / Save & Update" paradigm?
+    - Parse file structure for supported properties and build the groups
+    - Export new doc with changes, Save As dialog
+
+[ ] Swap "clone" snippet function for Figma helper function
+
+[ ] Bug -- Multi-selection doesn't show tokens in common between selection items.. problem with MergeTokens()?
+
+==================================================================
+
+[X] Change menu clicking behavior:
 [X] If there are sub-options like in Spacing, left-click opens menu
 [X] Left click opens a menu of properties
 [X] Menu items should not open contextmenu
 [X] No left-click menu if there is only one property to adjust
 [X] Right click only opens "edit/delete" options
 [X] Style menu (rounded corners, highlight color, etc.)
-[ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
+[?] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
 [X] Bug -- Tooltip isn't showing on :hover with menu-button
 [X] Fix the deprecated spacing issue to meet new AutoLayout standard - Needs to change menu to say "Top, Bottom, ..." etc.
-
----
-
-[ ] Inspector tab needs to be like: - atoms.borderRadius.xl - and closer to JSON - copy/paste
-[ ] Need to rollup all tokens from group, frame
-
-[ ] Font-family and font-size are not applied until weight is applied
-
-[ ] Can we cascade changes down applied at frame level? E.g. I apply a font at the frame level, and it affects all text within the frame
-
-[ ] Change name, version, license etc.
-[ ] How is it displayed in the plugin?
-
-[ ] Importing color styles needs to split between fill and border(?)
-
--   Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
--   Is it possible to capture the style update message automatically from Figma? If not, would it be good to have a separate "refresh" button?
-
-[ ] Import typography styles
-
--   Should also split into line-height, font-size, etc. tokens (this behavior may already be in the plugin)
-
-[ ] Import / export JSON:
-
--   Drop "Reset to Default / Clear / Save & Update" paradigm?
--   Parse file structure for supported properties and build the groups
--   Export new doc with changes, Save As dialog
-
-[ ] Swap "clone" snippet function for Figma helper function
-
-[ ] Bug -- Multi-selection doesn't show tokens in common between selection items.. problem with MergeTokens()?
-
-===
 
 [?] Bug -- Depth example disappears from the Depth buttons when switching between Tokens/JSON/Inspector tabs
 
