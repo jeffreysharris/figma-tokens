@@ -7,7 +7,8 @@ import * as pjs from '../../../package.json';
 
 export interface SelectionValue {
     borderRadius: string | undefined;
-    horizontalPadding: string | undefined;
+    paddingLeft: string | undefined;
+    paddingRight: string | undefined;
     verticalPadding: string | undefined;
     itemSpacing: string | undefined;
 }

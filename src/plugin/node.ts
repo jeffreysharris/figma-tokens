@@ -185,15 +185,21 @@ export async function setValuesOnNode(node, values, data) {
     // can be different with new autoLayout update
 
     if (values.spacing) {
-        if (typeof node.horizontalPadding !== 'undefined') {
-            node.horizontalPadding = Number(values.spacing);
+        if (typeof node.paddingLeft !== 'undefined' && typeof node.paddingRight !== 'undefined') {
+            node.paddingLeft = Number(values.spacing);
+            node.paddingRight = Number(values.spacing);
             node.verticalPadding = Number(values.spacing);
             node.itemSpacing = Number(values.spacing);
         }
     }
-    if (values.horizontalPadding) {
-        if (typeof node.horizontalPadding !== 'undefined') {
-            node.horizontalPadding = Number(values.horizontalPadding);
+    if (values.paddingLeft) {
+        if (typeof node.paddingLeft !== 'undefined') {
+            node.paddingLeft = Number(values.paddingLeft);
+        }
+    }
+    if (values.paddingRight) {
+        if (typeof node.paddingRight !== 'undefined') {
+            node.paddingRight = Number(values.paddingRight);
         }
     }
     if (values.verticalPadding) {
@@ -274,15 +280,21 @@ export async function removeValuesFromNode(node, prop) {
             }
             break;
         case 'spacing':
-            if (typeof node.horizontalPadding !== 'undefined') {
-                node.horizontalPadding = 0;
+            if (typeof node.paddingLeft !== 'undefined') {
+                node.paddingLeft = 0;
+                node.paddingRight = 0;
                 node.verticalPadding = 0;
                 node.itemSpacing = 0;
             }
             break;
-        case 'horizontalPadding':
-            if (typeof node.horizontalPadding !== 'undefined') {
-                node.horizontalPadding = 0;
+        case 'paddingLeft':
+            if (typeof node.paddingLeft !== 'undefined') {
+                node.paddingLeft = 0;
+            }
+            break;
+        case 'paddingRight':
+            if (typeof node.paddingRight !== 'undefined') {
+                node.paddingRight = 0;
             }
             break;
         case 'verticalPadding':

@@ -8,6 +8,7 @@ import IconHelp from './icons/IconHelp';
 import IconGithub from './icons/IconGithub';
 import IconHorizontalPadding from './icons/IconHorizontalPadding';
 import IconLeftPadding from './icons/IconLeftPadding';
+import IconRightPadding from './icons/IconRightPadding';
 import IconVerticalPadding from './icons/IconVerticalPadding';
 import IconGap from './icons/IconGap';
 import IconSpacing from './icons/IconSpacing';
@@ -27,6 +28,7 @@ const icons = {
     github: IconGithub,
     HorizontalPadding: IconHorizontalPadding,
     LeftPadding: IconLeftPadding,
+    RightPadding: IconRightPadding,
     VerticalPadding: IconVerticalPadding,
     Gap: IconGap,
     Spacing: IconSpacing,
