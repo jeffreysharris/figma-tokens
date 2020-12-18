@@ -7,7 +7,7 @@
 [X] Style menu (rounded corners, highlight color, etc.)
 [ ] Some options logic is broken, e.g. shouldn't be able to set both "All" and "Top Right" for "Border Radius" (May not be critical)
 [X] Bug -- Tooltip isn't showing on :hover with menu-button
-[ ] Fix the deprecated spacing issue to meet new AutoLayout standard - Needs to change menu to say "Top, Bottom, ..." etc.
+[X] Fix the deprecated spacing issue to meet new AutoLayout standard - Needs to change menu to say "Top, Bottom, ..." etc.
 
 ---
 

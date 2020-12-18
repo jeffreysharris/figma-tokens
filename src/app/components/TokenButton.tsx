@@ -75,7 +75,8 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
                 },
                 {label: 'Left', name: 'paddingLeft', icon: 'LeftPadding'},
                 {label: 'Right', name: 'paddingRight', icon: 'RightPadding'},
-                {label: 'Vertical', name: 'verticalPadding', icon: 'VerticalPadding'},
+                {label: 'Top', name: 'paddingTop', icon: 'TopPadding'},
+                {label: 'Bottom', name: 'paddingBottom', icon: 'BottomPadding'},
                 {label: 'Gap', name: 'itemSpacing', icon: 'Gap'},
             ];
             break;

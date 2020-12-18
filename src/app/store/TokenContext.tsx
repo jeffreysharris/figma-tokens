@@ -9,7 +9,8 @@ export interface SelectionValue {
     borderRadius: string | undefined;
     paddingLeft: string | undefined;
     paddingRight: string | undefined;
-    verticalPadding: string | undefined;
+    paddingTop: string | undefined;
+    paddingBottom: string | undefined;
     itemSpacing: string | undefined;
 }
 

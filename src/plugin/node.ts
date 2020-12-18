@@ -188,7 +188,8 @@ export async function setValuesOnNode(node, values, data) {
         if (typeof node.paddingLeft !== 'undefined' && typeof node.paddingRight !== 'undefined') {
             node.paddingLeft = Number(values.spacing);
             node.paddingRight = Number(values.spacing);
-            node.verticalPadding = Number(values.spacing);
+            node.paddingTop = Number(values.spacing);
+            node.paddingBottom = Number(values.spacing);
             node.itemSpacing = Number(values.spacing);
         }
     }
@@ -202,9 +203,14 @@ export async function setValuesOnNode(node, values, data) {
             node.paddingRight = Number(values.paddingRight);
         }
     }
-    if (values.verticalPadding) {
-        if (typeof node.verticalPadding !== 'undefined') {
-            node.verticalPadding = Number(values.verticalPadding);
+    if (values.paddingTop) {
+        if (typeof node.paddingTop !== 'undefined') {
+            node.paddingTop = Number(values.paddingTop);
+        }
+    }
+    if (values.paddingBottom) {
+        if (typeof node.paddingBottom !== 'undefined') {
+            node.paddingBottom = Number(values.paddingBottom);
         }
     }
     if (values.itemSpacing) {
@@ -283,7 +289,8 @@ export async function removeValuesFromNode(node, prop) {
             if (typeof node.paddingLeft !== 'undefined') {
                 node.paddingLeft = 0;
                 node.paddingRight = 0;
-                node.verticalPadding = 0;
+                node.paddingTop = 0;
+                node.paddingBottom = 0;
                 node.itemSpacing = 0;
             }
             break;
@@ -297,9 +304,14 @@ export async function removeValuesFromNode(node, prop) {
                 node.paddingRight = 0;
             }
             break;
-        case 'verticalPadding':
-            if (typeof node.verticalPadding !== 'undefined') {
-                node.verticalPadding = 0;
+        case 'paddingTop':
+            if (typeof node.paddingTop !== 'undefined') {
+                node.paddingTop = 0;
+            }
+            break;
+        case 'paddingBottom':
+            if (typeof node.paddingBottom !== 'undefined') {
+                node.paddingBottom = 0;
             }
             break;
         case 'itemSpacing':
