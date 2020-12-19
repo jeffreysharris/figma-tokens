@@ -22,9 +22,9 @@ const Navbar = ({active, setActive}) => {
     return (
         <div className="sticky top-0 navbar bg-white flex items-center justify-between z-1 border-b border-gray-200">
             <div>
-                <TabButton first name="tokens" label="Tokens" active={active} setActive={setActive} />
-                <TabButton name="json" label="JSON" active={active} setActive={setActive} />
-                <TabButton name="inspector" label="Inspector" active={active} setActive={setActive} />
+                <TabButton first name="tokens" label="Apply Tokens" active={active} setActive={setActive} />
+                <TabButton name="inspector" label="Layer JSON" active={active} setActive={setActive} />
+                <TabButton name="json" label="Tokens JSON" active={active} setActive={setActive} />
             </div>
             <div>
                 <Tooltip variant="right" label="Import Color Styles">

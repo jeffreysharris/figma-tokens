@@ -2,6 +2,12 @@
     atoms.borderRadius.xl, and closer to JSON, copy/paste okay
     [ ] Need to rollup all tokens from group, frame
 
+Apply Tokens | Inspect Layer Tokens | Inspect All Tokens
+
+I need to apply tokens on a layer
+I need to inspect and copy the layer tokens code
+I need to view and edit the total tokens code
+
 ---
 [ ] Change name, version, license etc.
     [ ] How is it displayed in the plugin?
