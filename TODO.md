@@ -1,4 +1,4 @@
-[ ] Inspector tab needs to be like:
+[X] Inspector tab needs to be like:
     atoms.borderRadius.xl, and closer to JSON, copy/paste okay
     [ ] Need to rollup all tokens from group, frame
 
@@ -14,7 +14,7 @@ I need to view and edit the total tokens code
 
 [ ] Importing color styles needs to split between fill and border(?)
 
-[ ] Font-family and font-size are not applied until weight is applied
+[ ] Bug? -- Font-family and font-size are not applied until weight is applied
 
 [ ] Can we cascade changes down applied at frame level? E.g. I apply a font at the frame level, and it affects all text within the frame
     - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
