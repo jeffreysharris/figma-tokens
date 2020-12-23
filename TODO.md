@@ -5,7 +5,7 @@
 
 [X] Bug -- Border radius, spacing, sizing doesn't work with strings e.g. 'px'
 
-[ ] Publish for team
+[X] Publish for team
 
 ----------------
 --- Up Next? ---
