@@ -181,7 +181,7 @@ const TokenButton = ({type, property, name, path, token, editMode, showForm}) =>
         button = (
             <EditButton
                 properties={properties}
-                onClick={onClick}
+                clickHandler={onClick}
                 showValue={showValue}
                 name={name}
                 path={path}

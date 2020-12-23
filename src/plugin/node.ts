@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import objectPath from 'object-path';
-import {convertToFigmaColor, convertToFigmaShadow} from './helpers';
+import {convertToFigmaColor, convertToFigmaShadow, stripVal} from './helpers';
 import {fetchAllPluginData} from './pluginData';
 import {setTextValuesOnTarget} from './styles';
 import store from './store';
@@ -52,35 +52,35 @@ export async function setValuesOnNode(node, values, data) {
     // BORDER RADIUS
     if (values.borderRadius) {
         if (typeof node.cornerRadius !== 'undefined') {
-            node.cornerRadius = Number(values.borderRadius || values.borderRadiusTopLeft);
+            node.cornerRadius = stripVal(values.borderRadius) || stripVal(values.borderRadiusTopLeft);
         }
     }
     if (values.borderRadiusTopLeft) {
         if (typeof node.topLeftRadius !== 'undefined') {
-            node.topLeftRadius = Number(values.borderRadiusTopLeft);
+            node.topLeftRadius = stripVal(values.borderRadiusTopLeft);
         }
     }
     if (values.borderRadiusTopRight) {
         if (typeof node.topRightRadius !== 'undefined') {
-            node.topRightRadius = Number(values.borderRadiusTopRight);
+            node.topRightRadius = stripVal(values.borderRadiusTopRight);
         }
     }
     if (values.borderRadiusBottomRight) {
         if (typeof node.bottomRightRadius !== 'undefined') {
-            node.bottomRightRadius = Number(values.borderRadiusBottomRight);
+            node.bottomRightRadius = stripVal(values.borderRadiusBottomRight);
         }
     }
     if (values.borderRadiusBottomLeft) {
         if (typeof node.bottomLeftRadius !== 'undefined') {
-            node.bottomLeftRadius = Number(values.borderRadiusBottomLeft);
+            node.bottomLeftRadius = stripVal(values.borderRadiusBottomLeft);
         }
     }
 
     // BORDER WIDTH
     if (values.borderWidth) {
         // Has to be larger than 0
-        if (typeof node.strokeWeight !== 'undefined' && Number(values.borderWidth) >= 0) {
-            node.strokeWeight = Number(values.borderWidth);
+        if (typeof node.strokeWeight !== 'undefined' && stripVal(values.borderWidth) >= 0) {
+            node.strokeWeight = stripVal(values.borderWidth);
         }
     }
 
@@ -91,7 +91,7 @@ export async function setValuesOnNode(node, values, data) {
             if (values.opacity.match(/(\d+%)/)) {
                 num = values.opacity.match(/(\d+%)/)[0].slice(0, -1) / 100;
             } else {
-                num = Number(values.opacity);
+                num = stripVal(values.opacity);
             }
             node.opacity = num;
         }
@@ -100,21 +100,21 @@ export async function setValuesOnNode(node, values, data) {
     // SIZING: BOTH
     if (values.sizing) {
         if (typeof node.resize !== 'undefined') {
-            node.resize(Number(values.sizing), Number(values.sizing));
+            node.resize(stripVal(values.sizing), stripVal(values.sizing));
         }
     }
 
     // SIZING: WIDTH
     if (values.width) {
         if (typeof node.resize !== 'undefined') {
-            node.resize(Number(values.width), node.height);
+            node.resize(stripVal(values.width), node.height);
         }
     }
 
     // SIZING: HEIGHT
     if (values.height) {
         if (typeof node.resize !== 'undefined') {
-            node.resize(node.width, Number(values.height));
+            node.resize(node.width, stripVal(values.height));
         }
     }
 
@@ -155,14 +155,14 @@ export async function setValuesOnNode(node, values, data) {
             setTextValuesOnTarget(node, {
                 fontFamily: values.fontFamilies,
                 fontWeight: values.fontWeights,
-                lineHeight: values.lineHeights,
-                fontSize: values.fontSizes,
+                lineHeight: stripVal(values.lineHeights),
+                fontSize: stripVal(values.fontSizes),
             });
         }
     }
 
     // STROKE
-    if (values.stroke) {
+    if (values.stroke && typeof values.stroke === 'string') {
         if (typeof node.strokes !== 'undefined') {
             const paints = figma.getLocalPaintStyles();
             const path = data.stroke.split('.');
@@ -185,35 +185,35 @@ export async function setValuesOnNode(node, values, data) {
     // can be different with new autoLayout update
 
     if (values.spacing) {
-        node.paddingLeft = Number(values.spacing);
-        node.paddingRight = Number(values.spacing);
-        node.paddingTop = Number(values.spacing);
-        node.paddingBottom = Number(values.spacing);
-        node.itemSpacing = Number(values.spacing);
+        node.paddingLeft = stripVal(values.spacing);
+        node.paddingRight = stripVal(values.spacing);
+        node.paddingTop = stripVal(values.spacing);
+        node.paddingBottom = stripVal(values.spacing);
+        node.itemSpacing = stripVal(values.spacing);
     }
     if (values.paddingLeft) {
         if (typeof node.paddingLeft !== 'undefined') {
-            node.paddingLeft = Number(values.paddingLeft);
+            node.paddingLeft = stripVal(values.paddingLeft);
         }
     }
     if (values.paddingRight) {
         if (typeof node.paddingRight !== 'undefined') {
-            node.paddingRight = Number(values.paddingRight);
+            node.paddingRight = stripVal(values.paddingRight);
         }
     }
     if (values.paddingTop) {
         if (typeof node.paddingTop !== 'undefined') {
-            node.paddingTop = Number(values.paddingTop);
+            node.paddingTop = stripVal(values.paddingTop);
         }
     }
     if (values.paddingBottom) {
         if (typeof node.paddingBottom !== 'undefined') {
-            node.paddingBottom = Number(values.paddingBottom);
+            node.paddingBottom = stripVal(values.paddingBottom);
         }
     }
     if (values.itemSpacing) {
         if (typeof node.itemSpacing !== 'undefined') {
-            node.itemSpacing = Number(values.itemSpacing);
+            node.itemSpacing = stripVal(values.itemSpacing);
         }
     }
 

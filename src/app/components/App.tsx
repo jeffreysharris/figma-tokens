@@ -109,12 +109,16 @@ const App = () => {
                     {active === 'json' && <JSONEditor />}
                     {active === 'inspector' && <Inspector />}
                 </div>
-                <div className="p-4 flex-shrink-0 flex items-center justify-between">
-                    <div className="text-gray-600 text-xxs">Figma Tokens {pjs.version}</div>
+                <div className="p-4 flex-shrink-0 flex items-start justify-between">
+                    <div className="text-gray-600 text-xxs">
+                        MC Design Tokens Manager {pjs.version}
+                        <br />
+                        Forked from 'Figma Tokens' by Jan Six
+                    </div>
                     <div className="text-gray-600 text-xxs">
                         <a
                             className="flex items-center"
-                            href="https://github.com/six7/figma-tokens"
+                            href="https://github.com/jeffreysharris/figma-tokens"
                             target="_blank"
                             rel="noreferrer"
                         >

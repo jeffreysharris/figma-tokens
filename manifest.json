@@ -1,5 +1,5 @@
 {
-  "name": "MC Tokens",
+  "name": "MC Design Tokens Manager",
   "id": "912785972839649572",
   "api": "1.0.0",
   "main": "dist/code.js",

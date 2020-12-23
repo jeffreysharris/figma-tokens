@@ -3,10 +3,9 @@ import '@reach/menu-button/styles.css';
 import * as React from 'react';
 import Icon from './Icon';
 import {useTokenState} from '../store/TokenContext';
-/* eslint-disable react/jsx-props-no-spreading */
 type MenuProps = {
     properties: Array<Record<string, any>>;
-    onClick: (givenProperties: any, isActive?: boolean) => void;
+    clickHandler: (givenProperties: any, isActive?: boolean) => void;
     showValue: boolean;
     name: string;
     path: string;
@@ -29,7 +28,7 @@ const EditButton = React.forwardRef<HTMLDivElement, MenuProps>((props, forwarded
                                 onContextMenu={(e) => {
                                     e.stopPropagation();
                                 }}
-                                onSelect={() => props.onClick([property.name], isActive)}
+                                onSelect={() => props.clickHandler([property.name], isActive)}
                             >
                                 <div className="flex items-center">
                                     {property.icon && (

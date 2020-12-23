@@ -10,6 +10,11 @@ interface RGBA {
     a?: number;
 }
 
+export function stripVal(v) {
+    const val = v ? Number(String(v).replace(/[^-\d.]/g, '')) : 0;
+    return val;
+}
+
 export function clone(val) {
     const type = typeof val;
     if (val === null) {
@@ -73,6 +78,7 @@ export function mergeDeep(target, ...sources) {
 export function convertLineHeightToFigma(inputValue) {
     let lineHeight;
     const value = inputValue.toString();
+    // console.log(`value = ${value}`);
     const numbers = /^\d+(\.\d+)?$/;
     if (value.match(numbers)) {
         lineHeight = {
@@ -178,11 +184,11 @@ export function convertToFigmaShadow(input) {
         };
 
         const offset = {
-            x: Number(vals[0].replace(/[^-\d]/g, '')),
-            y: Number(vals[1].replace(/[^-\d]/g, '')),
+            x: Number(vals[0].replace(/[^-\d.]/g, '')),
+            y: Number(vals[1].replace(/[^-\d.]/g, '')),
         };
-        const radius = vals[2] ? Number(vals[2].replace(/[^-\d]/g, '')) : 0;
-        const spread = vals[3] ? Number(vals[3].replace(/[^-\d]/g, '')) : 0;
+        const radius = vals[2] ? Number(vals[2].replace(/[^-\d.]/g, '')) : 0;
+        const spread = vals[3] && vals[3] !== vals[vals.length - 1] ? Number(vals[3].replace(/[^-\d.]/g, '')) : 0;
         // must be in this form to set drop-shadow effect in Figma
         result.push({
             blendMode,

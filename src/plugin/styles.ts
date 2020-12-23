@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import {figmaRGBToHex, figmaRGBToWebRGB, clone} from '@figma-plugin/helpers';
 import Dot from 'dot-object';
-import {convertLineHeightToFigma, convertToFigmaColor, convertToFigmaShadow} from './helpers';
+import {convertLineHeightToFigma, convertToFigmaColor, convertToFigmaShadow, stripVal} from './helpers';
 import {notifyStyleValues} from './notifiers';
 
 const dot = new Dot('/');
@@ -38,7 +38,6 @@ const updateEffectStyles = (depthTokens, shouldCreate = false) => {
         const matchingStyle = effects.filter((n) => n.name === key);
         if (typeof value === 'string') {
             const shadows = convertToFigmaShadow(value);
-            console.log(shadows);
             if (matchingStyle.length) {
                 let fx = clone(matchingStyle[0].effects);
                 fx = shadows;
@@ -68,7 +67,7 @@ export const setTextValuesOnTarget = async (target, values) => {
     }
 
     if (fontSize) {
-        target.fontSize = Number(fontSize);
+        target.fontSize = stripVal(fontSize);
     }
     if (lineHeight) {
         target.lineHeight = convertLineHeightToFigma(lineHeight);
@@ -124,10 +123,11 @@ export function updateStyles(tokens, shouldCreate = false): void {
 
 export function pullStyles(styleTypes): void {
     let fill;
+    let stroke;
     let depth;
     // let typography;
     if (styleTypes.colorStyles) {
-        fill = figma
+        stroke = figma
             .getLocalPaintStyles()
             .filter((style) => style.paints.length === 1 && style.paints[0].type === 'SOLID')
             .map((style) => {
@@ -139,6 +139,9 @@ export function pullStyles(styleTypes): void {
                 }
                 return null;
             });
+        // for v0, duplicating PaintStyles as both stroke and fill tokens. Users can delete unwanted tokens in each category after import.
+        // goal here is to let folks have control over which colors are only for fills, only for strokes, or both.
+        fill = stroke;
     }
     if (styleTypes.effectStyles) {
         depth = figma
@@ -164,5 +167,5 @@ export function pullStyles(styleTypes): void {
     // if (styleTypes.textStyles) {
     //     typography = figma.getLocalTextStyles();
     // }
-    notifyStyleValues({fill, depth});
+    notifyStyleValues({fill, stroke, depth});
 }

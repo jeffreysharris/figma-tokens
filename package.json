@@ -1,7 +1,7 @@
 {
-	"name": "figma-tokens",
-	"version": "0.6.0",
-	"description": "Figma Design Tokens",
+	"name": "MC-tokens",
+	"version": "1.0.0",
+	"description": "MC Design Tokens Manager",
 	"license": "ISC",
 	"scripts": {
 		"build-css": "postcss src/app/styles/tailwind.css -o src/app/styles/main.css",

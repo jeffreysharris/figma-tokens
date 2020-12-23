@@ -24,7 +24,7 @@ const Navbar = ({active, setActive}) => {
             <div>
                 <TabButton first name="tokens" label="Apply Tokens" active={active} setActive={setActive} />
                 <TabButton name="inspector" label="Layer JSON" active={active} setActive={setActive} />
-                <TabButton name="json" label="Tokens JSON" active={active} setActive={setActive} />
+                <TabButton name="json" label="All Tokens JSON" active={active} setActive={setActive} />
             </div>
             <div>
                 <Tooltip variant="right" label="Import Color Styles">

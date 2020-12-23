@@ -1260,6 +1260,10 @@ form {
     flex-wrap: wrap !important;
 }
 
+.items-start {
+    align-items: flex-start !important;
+}
+
 .items-center {
     align-items: center !important;
 }

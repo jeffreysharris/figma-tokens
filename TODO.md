@@ -1,38 +1,61 @@
-[X] Inspector tab needs to be like:
-    atoms.borderRadius.xl, and closer to JSON, copy/paste okay
-    [ ] Need to rollup all tokens from group, frame
+-----------------
+--- Immediate ---
 
-Apply Tokens | Inspect Layer Tokens | Inspect All Tokens
+[X] Bug -- Account for decimals in depth
 
-I need to apply tokens on a layer
-I need to inspect and copy the layer tokens code
-I need to view and edit the total tokens code
+[X] Bug -- Border radius, spacing, sizing doesn't work with strings e.g. 'px'
 
----
-[ ] Change name, version, license etc.
-    [ ] How is it displayed in the plugin?
+[ ] Publish for team
 
-[ ] Importing color styles needs to split between fill and border(?)
+----------------
+--- Up Next? ---
+
+[ ] Applying Styles in Figma should also apply relevant tokens
+
+[ ] Deleting a token from library should remove from nodes as well
+
+[ ] Re-sizeable panel height?
+
+[ ] Refresh vs. Import styles
+    - Refresh should ignore styles that aren't currently tokens, only update current tokens
 
 [ ] Bug? -- Font-family and font-size are not applied until weight is applied
 
-[ ] Can we cascade changes down applied at frame level? E.g. I apply a font at the frame level, and it affects all text within the frame
     - Split this functionality into two separate interactors for "Import color styles", one for fill and one for stroke
     - Is it possible to capture the style update message automatically from Figma? If not, would it be good to have a separate "refresh" button?
 
 [ ] Import typography styles
-    - Should also split into line-height, font-size, etc. tokens (this behavior may already be in the plugin)
+    - Should also split into line-height, font-size, etc. tokens
 
-[ ] Import / export JSON:
+[ ] Import / export JSON instead of just copy/paste?:
     - Drop "Reset to Default / Clear / Save & Update" paradigm?
     - Parse file structure for supported properties and build the groups
     - Export new doc with changes, Save As dialog
 
 [ ] Swap "clone" snippet function for Figma helper function
 
+---------------
+--- Future? ---
+
+Recursively deal with children?? Not sure about value vs. the effort, perf cost, and edge cases...
+[ ] Need to rollup all tokens from group, frame
 [ ] Bug -- Multi-selection doesn't show tokens in common between selection items.. problem with MergeTokens()?
+[ ] Can we cascade changes down applied at frame level? E.g. I apply a font at the frame level, and it affects all text within the frame
 
 ==================================================================
+
+[X] Put MC styles in here
+
+[X] Inspector tab needs to be like:
+    atoms.borderRadius.xl, and closer to JSON, copy/paste okay
+    Apply Tokens | Inspect Layer Tokens | Inspect All Tokens
+
+[X] Ensure property names in JSON work with JSX/JSS
+
+[X] Change name, version, license etc.
+
+[X] Importing color styles needs to split between fill and border(?)
+    - Figma doesn't differentiate PaintStyle between fill and stroke. Solution is to dupe each Figma style as both fill and stroke?
 
 [X] Change menu clicking behavior:
 [X] If there are sub-options like in Spacing, left-click opens menu
